@@ -7,6 +7,7 @@ import {
   Briefcase,
   ChevronDown,
   ChevronUp,
+  FileCode2Icon,
   Home,
   Layers3,
   LockIcon,
@@ -22,12 +23,15 @@ import React, { useState } from "react";
 
 import { useAppDispatch, useAppSelector } from "@/app/redux";
 import { setIsSidebarCollapsed } from "@/state";
+import { useGetProjectsQuery } from "@/state/api";
 
 import SidebarLink from "./SidebarLinks";
 
 const Sidebar = () => {
   const [showProjects, setShowProjects] = useState(true);
   const [showPriority, setShowPriority] = useState(true);
+
+  const { data: projects } = useGetProjectsQuery();
 
   const dispatch = useAppDispatch();
   const isSidebarCollapsed = useAppSelector(
@@ -96,6 +100,16 @@ const Sidebar = () => {
         </button>
 
         {/* PROJECTS LIST */}
+
+        {showProjects &&
+          projects?.map((project) => (
+            <SidebarLink
+              key={project.id}
+              label={project.name}
+              href={`/project/${project.id}`}
+              icon={FileCode2Icon}
+            />
+          ))}
 
         {/* PRIORITIES LINKS */}
         <button
