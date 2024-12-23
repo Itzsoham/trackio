@@ -4,8 +4,10 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
+
 // ROUTES IMPORT
-import projectRoutes from "./routes/proejctRoutes";
+import projectRoutes from "./routes/projectRoutes";
+import taskRoutes from "./routes/taskRoutes";
 
 // CONFIGURATIONS
 dotenv.config();
@@ -26,6 +28,7 @@ app.get("/", (req, res) => {
 
 // ROUTES USE
 app.use("/projects", projectRoutes);
+app.use("/tasks", taskRoutes);
 
 // SERVER
 const PORT = process.env.PORT || 5000;
