@@ -10,7 +10,6 @@ import { setIsSidebarCollapsed } from "@/state";
 
 const Topbar = () => {
   const { theme, setTheme } = useTheme();
-  console.log(theme);
 
   const dispatch = useAppDispatch();
   const isSidebarCollapsed = useAppSelector(

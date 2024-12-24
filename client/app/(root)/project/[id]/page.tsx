@@ -4,10 +4,10 @@ import React, { use, useState } from "react";
 
 import ModalNewTask from "@/components/ModalNewTask";
 
-import BoardView from "../BoardView";
-import ListView from "../ListView";
+import Board from "../BoardView";
+import List from "../ListView";
 import ProjectHeader from "../ProjectHeader";
-import TableView from "../TableView";
+import Table from "../TableView";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -27,16 +27,16 @@ const Project = ({ params }: Props) => {
       />
       <ProjectHeader activeTab={activeTab} setActiveTab={setActiveTab} />
       {activeTab === "Board" && (
-        <BoardView id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen} />
+        <Board id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen} />
       )}
       {activeTab === "List" && (
-        <ListView id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen} />
+        <List id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen} />
       )}
       {/* {activeTab === "Timeline" && (
         <Timeline id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen} />
       )} */}
       {activeTab === "Table" && (
-        <TableView id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen} />
+        <Table id={id} setIsModalNewTaskOpen={setIsModalNewTaskOpen} />
       )}
     </div>
   );
