@@ -1,10 +1,10 @@
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { useTheme } from "next-themes";
 import React from "react";
 
 import Header from "@/components/ui/Header";
+import { dataGridClassNames, dataGridSxStyles } from "@/lib/utils";
 import { useGetTasksQuery } from "@/state/api";
-
-// import { dataGridClassNames, dataGridSxStyles } from "@/lib/utils";
 
 type Props = {
   id: string;
@@ -67,7 +67,8 @@ const columns: GridColDef[] = [
 ];
 
 const TableView = ({ id, setIsModalNewTaskOpen }: Props) => {
-  // const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
+  const { theme } = useTheme();
+
   const {
     data: tasks,
     error,
@@ -96,8 +97,8 @@ const TableView = ({ id, setIsModalNewTaskOpen }: Props) => {
       <DataGrid
         rows={tasks || []}
         columns={columns}
-        // className={dataGridClassNames}
-        // sx={dataGridSxStyles(isDarkMode)}
+        className={dataGridClassNames}
+        sx={dataGridSxStyles(theme)}
       />
     </div>
   );
