@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "pm-s3-images.s3.us-east-2.amazonaws.com",
+        hostname: "trackio-s3-imgs.s3.us-east-1.amazonaws.com",
         port: "",
         pathname: "/**",
       },
