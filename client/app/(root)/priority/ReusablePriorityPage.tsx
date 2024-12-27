@@ -8,7 +8,12 @@ import TaskCard from "@/components/cards/TaskCard";
 import ModalNewTask from "@/components/ModalNewTask";
 import Header from "@/components/ui/Header";
 import { dataGridClassNames, dataGridSxStyles } from "@/lib/utils";
-import { Priority, Task, useGetTasksByUserQuery } from "@/state/api";
+import {
+  Priority,
+  Task,
+  useGetAuthUserQuery,
+  useGetTasksByUserQuery,
+} from "@/state/api";
 
 type Props = {
   priority: Priority;
@@ -75,9 +80,8 @@ const ReusablePriorityPage = ({ priority }: Props) => {
 
   const { theme } = useTheme();
 
-  // const { data: currentUser } = useGetAuthUserQuery({});
-  // const userId = currentUser?.userDetails?.userId ?? null;
-  const userId = 1;
+  const { data: currentUser } = useGetAuthUserQuery({});
+  const userId = currentUser?.userDetails?.userId ?? null;
   const {
     data: tasks,
     isLoading,
