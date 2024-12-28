@@ -1,3 +1,5 @@
+"use client";
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Authenticator } from "@aws-amplify/ui-react";
 import { Amplify } from "aws-amplify";

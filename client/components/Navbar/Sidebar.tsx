@@ -1,4 +1,4 @@
-import { signOut } from "aws-amplify/auth";
+// import { signOut } from "aws-amplify/auth";
 import {
   AlertCircle,
   AlertOctagon,
@@ -22,7 +22,7 @@ import React, { useState } from "react";
 
 import { useAppDispatch, useAppSelector } from "@/app/redux";
 import { setIsSidebarCollapsed } from "@/state";
-import { useGetAuthUserQuery, useGetProjectsQuery } from "@/state/api";
+import { useGetProjectsQuery } from "@/state/api";
 
 import SidebarLink from "./SidebarLinks";
 
@@ -32,22 +32,22 @@ const Sidebar = () => {
 
   const { data: projects } = useGetProjectsQuery();
 
-  const { data: currentUser } = useGetAuthUserQuery({});
+  // const { data: currentUser } = useGetAuthUserQuery({});
 
   const dispatch = useAppDispatch();
   const isSidebarCollapsed = useAppSelector(
     (state) => state.global.isSidebarCollapsed
   );
 
-  const handleSignOut = async () => {
-    try {
-      await signOut();
-    } catch (error) {
-      console.error("Error signing out: ", error);
-    }
-  };
-  if (!currentUser) return null;
-  const currentUserDetails = currentUser?.userDetails;
+  // const handleSignOut = async () => {
+  //   try {
+  //     await signOut();
+  //   } catch (error) {
+  //     console.error("Error signing out: ", error);
+  //   }
+  // };
+  // if (!currentUser) return null;
+  // const currentUserDetails = currentUser?.userDetails;
 
   const sidebarClassNames = `fixed flex flex-col h-[100%] justify-between shadow-xl
     transition-all duration-300 h-full z-40 dark:bg-black overflow-y-auto bg-white
@@ -161,7 +161,7 @@ const Sidebar = () => {
         )}
       </div>
       <div className="z-10 mt-32 flex w-full flex-col items-center gap-4 bg-white px-8 py-4 dark:bg-black md:hidden">
-        <div className="flex w-full items-center">
+        {/* <div className="flex w-full items-center">
           <div className="flex size-9 items-center justify-center">
             {!!currentUserDetails?.profilePictureUrl ? (
               <Image
@@ -184,7 +184,7 @@ const Sidebar = () => {
           >
             Sign out
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
